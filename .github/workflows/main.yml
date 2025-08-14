@@ -31,3 +31,22 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+      - name: Send Mail
+        if: failure()
+        uses: https://github.com/kajalmahto605/action-send-mail@v3
+        with:
+          to: mahtokajal765@gmail.com 
+          from: kajalmahato.techanek@gmail.com
+          subject: ${{github.job}} job of ${{github.repository}} has ${{job.status}}
+          body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} 
+           has ${{ job.status }}
+          priority: high
+          convert_markdown: true
+        
+      
+          
+          
+        
+
+          
+       
