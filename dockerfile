@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 4000
 
-ENTRYPOINT [ "node", "sendSuccessEmail.js" ]
+CMD [ "node", "index.js" ]
