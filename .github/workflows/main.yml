@@ -33,12 +33,19 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-      - uses: kajalmahto605/NodeJS-App@main
+      - name: Send success email
+        if: ${{ success() }}
+        uses: kajalmahto605/action-send-mail@v3
         with:
-        entryPoint: "sendSuccessEmail.js"
-        args: "--to=mahtokajal765@gmail.com --from=kajalmahato.techanek@gmail.com --subject='SUCCESS: ${{ github.job }} job of ${{ github.repository }} has succeeded' --body='The ${{ github.job }} job in workflow ${{ github.workflow }} of ${{ github.repository }} has succeeded.\nCommit: ${{ github.sha }}\nBranch: ${{ github.ref }}' --priority=high --convert_markdown=true"
-      
-          
+          to: mahtokajal765@gmail.com 
+          from: kajalmahato.techanek@gmail.com
+          subject: "SUCCESS: ${{ github.job }} job of ${{ github.repository }} has succeeded"
+          body: |
+             The ${{ github.job }} job in workflow ${{ github.workflow }} of ${{ github.repository }} has succeeded.
+          Commit: ${{ github.sha }}
+          Branch: ${{ github.ref }}
+          priority: high
+          convert_markdown: true
           
         
 
