@@ -35,7 +35,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
       - name: Send success email
         if: ${{ success() }}
-        uses: kajalmahto605/NodeJS-App@v3
+        uses: kajalmahto605/NodeJS-App@main
         with:
           to: mahtokajal765@gmail.com 
           from: kajalmahato.techanek@gmail.com
