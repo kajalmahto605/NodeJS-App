@@ -37,6 +37,10 @@ jobs:
         if: success() 
         uses: kajalmahto605/NodeJS-App@main
         with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
           to: mahtokajal765@gmail.com 
           from: kajalmahato.techanek@gmail.com
           subject: "SUCCESS: ${{ github.job }} job of ${{ github.repository }} has succeeded"
