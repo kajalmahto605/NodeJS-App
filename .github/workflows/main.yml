@@ -43,6 +43,16 @@ jobs:
             --body="The ${{ github.job }} job in workflow ${{ github.workflow }} of ${{ github.repository }} has succeeded. Commit: ${{ github.sha }} Branch: ${{ github.ref }}" \
             --priority=high --convert_markdown=true
 
+      - name: Send failure email
+        if: failure()
+        run: |
+          node sendSuccessEmail.js \
+            --to=mahtokajal765@gmail.com \
+            --from=kajalmahato.techanek@gmail.com \
+            --subject="FAILURE: ${{ github.job }} job of ${{ github.repository }} has failed" \
+            --body="The ${{ github.job }} job in workflow ${{ github.workflow }} of ${{ github.repository }} has failed. Commit: ${{ github.sha }} Branch: ${{ github.ref }}" \
+            --priority=high --convert_markdown=true  
+
 
 
 
