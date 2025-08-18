@@ -37,7 +37,7 @@ jobs:
         if: success()
         run: |
           node sendSuccessEmail.js \
-            --to=mahtokajal765@gmail.com \
+            --to=meyeb51142@euleina.com \
             --from=kajalmahato.techanek@gmail.com \
             --subject="SUCCESS: ${{ github.job }} job of ${{ github.repository }} has succeeded" \
             --body="The ${{ github.job }} job in workflow ${{ github.workflow }} of ${{ github.repository }} has succeeded. Commit: ${{ github.sha }} Branch: ${{ github.ref }}" \
